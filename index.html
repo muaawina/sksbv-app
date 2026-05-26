@@ -698,7 +698,11 @@
             max-width: 180px;
             line-height: 1.3;
         }
-        .unit-badge i { flex-shrink: 0; }
+
+        .unit-badge i {
+            flex-shrink: 0;
+        }
+
         .unit-badge span {
             overflow: hidden;
             display: -webkit-box;
@@ -712,10 +716,11 @@
         .nav-menu-overlay {
             position: fixed;
             inset: 0;
-            background: rgba(0,0,0,0.35);
+            background: rgba(0, 0, 0, 0.35);
             z-index: 1999;
             backdrop-filter: blur(2px);
         }
+
         .nav-menu {
             position: fixed;
             top: 0;
@@ -1876,13 +1881,16 @@
                     <span class="brand-sub">PERINTHALMANNA ZONE</span>
                 </div>
                 <div class="nav-actions">
-                    <span id="display-unit-name" class="unit-badge"><i class="fa-solid fa-mosque"></i> <span>Loading...</span></span>
+                    <span id="display-unit-name" class="unit-badge"><i class="fa-solid fa-mosque"></i>
+                        <span>Loading...</span></span>
                     <button id="menu-toggle-btn" class="icon-btn"><i class="fa-solid fa-bars"></i></button>
                 </div>
             </nav>
 
             <!-- Nav Overlay (click outside to close) -->
-            <div id="nav-menu-overlay" class="nav-menu-overlay hidden" onclick="document.getElementById('nav-menu').classList.add('hidden'); this.classList.add('hidden');"></div>
+            <div id="nav-menu-overlay" class="nav-menu-overlay hidden"
+                onclick="document.getElementById('nav-menu').classList.add('hidden'); this.classList.add('hidden');">
+            </div>
 
             <!-- Navigation Drawer Menu -->
             <div id="nav-menu" class="nav-menu glass hidden">
@@ -1916,7 +1924,7 @@
                         <div class="stat-card glass-glow rank-card">
                             <div class="card-icon"><i class="fa-solid fa-trophy"></i></div>
                             <div class="card-info">
-                                <h3>റാങ്ക് (Rank)</h3>
+                                <h3>Rank</h3>
                                 <div id="stat-rank" class="card-value">-</div>
                                 <span class="card-sub-info" id="rank-update-time">Loading...</span>
                             </div>
@@ -1925,7 +1933,7 @@
                         <div class="stat-card glass-glow score-card">
                             <div class="card-icon"><i class="fa-solid fa-star"></i></div>
                             <div class="card-info">
-                                <h3>ടോട്ടൽ സ്കോർ</h3>
+                                <h3>Total Score</h3>
                                 <div id="stat-score" class="card-value">0</div>
                                 <span class="card-sub-info" id="score-update-time">Loading...</span>
                             </div>
@@ -1934,16 +1942,16 @@
                         <div class="stat-card glass-glow students-card">
                             <div class="card-icon"><i class="fa-solid fa-users"></i></div>
                             <div class="card-info">
-                                <h3>കുട്ടികളുടെ എണ്ണം</h3>
+                                <h3>Total Students</h3>
                                 <div id="stat-students" class="card-value">0</div>
-                                <span class="card-sub-info">ആകെ വിദ്യാർത്ഥികൾ</span>
+                                <span class="card-sub-info">Total Students</span>
                             </div>
                         </div>
                     </div>
 
                     <!-- Notification Area -->
                     <div class="section-card glass notification-section">
-                        <h2><i class="fa-solid fa-bell bell-ring"></i> നോട്ടിഫിക്കേഷൻ (Notifications)</h2>
+                        <h2><i class="fa-solid fa-bell bell-ring"></i> Notifications</h2>
                         <div id="notifications-list" class="notifications-list">
                             <div class="empty-state">നോട്ടിഫിക്കേഷനുകൾ ലഭ്യമല്ല</div>
                         </div>
@@ -2150,8 +2158,8 @@
                                 class="fa-solid fa-calendar-plus"></i> പുതിയ പ്രോഗ്രാമുകൾ</button>
                         <button class="admin-menu-btn" data-admin-tab="admin-notifications"><i
                                 class="fa-solid fa-bullhorn"></i> നോട്ടിഫിക്കേഷൻ</button>
-                        <button class="admin-menu-btn" data-admin-tab="admin-settings"><i
-                                class="fa-solid fa-gear"></i> ക്രമീകരണം</button>
+                        <button class="admin-menu-btn" data-admin-tab="admin-settings"><i class="fa-solid fa-gear"></i>
+                            ക്രമീകരണം</button>
                     </div>
                 </aside>
 
@@ -2217,28 +2225,38 @@
 
                         <!-- Add Madrasa Form -->
                         <div class="section-card glass" style="margin-bottom: 20px;">
-                            <div class="section-header" style="cursor:pointer;" onclick="document.getElementById('add-madrasa-form-wrapper').classList.toggle('hidden')">
-                                <h3><i class="fa-solid fa-plus-circle" style="color:var(--primary)"></i> പുതിയ മദ്രസ ആഡ് ചെയ്യുക</h3>
-                                <button type="button" class="btn secondary-btn size-sm"><i class="fa-solid fa-chevron-down"></i></button>
+                            <div class="section-header" style="cursor:pointer;"
+                                onclick="document.getElementById('add-madrasa-form-wrapper').classList.toggle('hidden')">
+                                <h3><i class="fa-solid fa-plus-circle" style="color:var(--primary)"></i> പുതിയ മദ്രസ ആഡ്
+                                    ചെയ്യുക</h3>
+                                <button type="button" class="btn secondary-btn size-sm"><i
+                                        class="fa-solid fa-chevron-down"></i></button>
                             </div>
                             <div id="add-madrasa-form-wrapper" class="hidden">
                                 <form id="add-madrasa-form" class="standard-form mt-3">
                                     <div class="form-row">
                                         <div class="input-group">
-                                            <label for="new-madrasa-name"><i class="fa-solid fa-mosque"></i> മദ്രസ പേര് *</label>
+                                            <label for="new-madrasa-name"><i class="fa-solid fa-mosque"></i> മദ്രസ പേര്
+                                                *</label>
                                             <input type="text" id="new-madrasa-name" required placeholder="മദ്രസ പേര്">
                                         </div>
                                         <div class="input-group">
-                                            <label for="new-madrasa-username"><i class="fa-solid fa-user"></i> Username *</label>
-                                            <input type="text" id="new-madrasa-username" required placeholder="login username">
+                                            <label for="new-madrasa-username"><i class="fa-solid fa-user"></i> Username
+                                                *</label>
+                                            <input type="text" id="new-madrasa-username" required
+                                                placeholder="login username">
                                         </div>
                                     </div>
                                     <div class="input-group">
-                                        <label for="new-madrasa-password"><i class="fa-solid fa-lock"></i> Password *</label>
+                                        <label for="new-madrasa-password"><i class="fa-solid fa-lock"></i> Password
+                                            *</label>
                                         <input type="text" id="new-madrasa-password" required placeholder="password">
                                     </div>
                                     <details style="margin-top:8px;">
-                                        <summary style="cursor:pointer; color:var(--primary); font-weight:600; padding:8px 0;"><i class="fa-solid fa-plus"></i> Add More Details (Optional)</summary>
+                                        <summary
+                                            style="cursor:pointer; color:var(--primary); font-weight:600; padding:8px 0;">
+                                            <i class="fa-solid fa-plus"></i> Add More Details (Optional)
+                                        </summary>
                                         <div class="form-row mt-2">
                                             <div class="input-group">
                                                 <label for="new-madrasa-cluster">Cluster</label>
@@ -2401,24 +2419,33 @@
 
                         <!-- Change Admin Password -->
                         <div class="section-card glass mt-4">
-                            <h3><i class="fa-solid fa-key" style="color:var(--primary)"></i> അഡ്മിൻ Username / Password മാറ്റുക</h3>
+                            <h3><i class="fa-solid fa-key" style="color:var(--primary)"></i> അഡ്മിൻ Username / Password
+                                മാറ്റുക</h3>
                             <form id="admin-change-cred-form" class="standard-form mt-3">
                                 <div class="input-group">
-                                    <label for="admin-cred-current-pass"><i class="fa-solid fa-lock"></i> നിലവിലുള്ള Password *</label>
-                                    <input type="password" id="admin-cred-current-pass" required placeholder="Current password">
+                                    <label for="admin-cred-current-pass"><i class="fa-solid fa-lock"></i> നിലവിലുള്ള
+                                        Password *</label>
+                                    <input type="password" id="admin-cred-current-pass" required
+                                        placeholder="Current password">
                                 </div>
                                 <div class="input-group">
-                                    <label for="admin-cred-new-username"><i class="fa-solid fa-user"></i> പുതിയ Username (ഒഴിവാക്കിയാൽ മാറില്ല)</label>
-                                    <input type="text" id="admin-cred-new-username" placeholder="New username (optional)">
+                                    <label for="admin-cred-new-username"><i class="fa-solid fa-user"></i> പുതിയ Username
+                                        (ഒഴിവാക്കിയാൽ മാറില്ല)</label>
+                                    <input type="text" id="admin-cred-new-username"
+                                        placeholder="New username (optional)">
                                 </div>
                                 <div class="form-row">
                                     <div class="input-group">
-                                        <label for="admin-cred-new-pass"><i class="fa-solid fa-lock"></i> പുതിയ Password (ഒഴിവാക്കിയാൽ മാറില്ല)</label>
-                                        <input type="password" id="admin-cred-new-pass" placeholder="New password (optional)">
+                                        <label for="admin-cred-new-pass"><i class="fa-solid fa-lock"></i> പുതിയ Password
+                                            (ഒഴിവാക്കിയാൽ മാറില്ല)</label>
+                                        <input type="password" id="admin-cred-new-pass"
+                                            placeholder="New password (optional)">
                                     </div>
                                     <div class="input-group">
-                                        <label for="admin-cred-confirm-pass"><i class="fa-solid fa-lock"></i> Confirm Password</label>
-                                        <input type="password" id="admin-cred-confirm-pass" placeholder="Confirm new password">
+                                        <label for="admin-cred-confirm-pass"><i class="fa-solid fa-lock"></i> Confirm
+                                            Password</label>
+                                        <input type="password" id="admin-cred-confirm-pass"
+                                            placeholder="Confirm new password">
                                     </div>
                                 </div>
                                 <button type="submit" class="btn primary-btn btn-glow mt-2">
@@ -4726,7 +4753,7 @@
     </script>
     <script>
         // ==================== ADD MADRASA FORM ====================
-        document.getElementById('add-madrasa-form').addEventListener('submit', async function(e) {
+        document.getElementById('add-madrasa-form').addEventListener('submit', async function (e) {
             e.preventDefault();
             const name = document.getElementById('new-madrasa-name').value.trim();
             const username = document.getElementById('new-madrasa-username').value.trim();
@@ -4754,14 +4781,14 @@
                 } else {
                     showToast(res.message || 'Error occurred', 'error');
                 }
-            } catch(err) {
+            } catch (err) {
                 document.getElementById('app-loader').classList.add('hidden');
                 showToast('Server error: ' + err.message, 'error');
             }
         });
 
         // ==================== ADMIN CREDENTIALS CHANGE ====================
-        document.getElementById('admin-change-cred-form').addEventListener('submit', async function(e) {
+        document.getElementById('admin-change-cred-form').addEventListener('submit', async function (e) {
             e.preventDefault();
             const currentPass = document.getElementById('admin-cred-current-pass').value;
             const newUsername = document.getElementById('admin-cred-new-username').value.trim();
@@ -4787,7 +4814,7 @@
                 } else {
                     showToast(res.message || 'Error', 'error');
                 }
-            } catch(err) {
+            } catch (err) {
                 document.getElementById('app-loader').classList.add('hidden');
                 showToast('Server error: ' + err.message, 'error');
             }
