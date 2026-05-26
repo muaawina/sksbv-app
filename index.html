@@ -688,32 +688,51 @@
             background: rgba(5, 150, 105, 0.08);
             border: 1px solid rgba(5, 150, 105, 0.15);
             color: var(--primary);
-            padding: 8px 16px;
-            border-radius: 30px;
-            font-size: 0.85rem;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.78rem;
             font-weight: 600;
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
+            max-width: 180px;
+            line-height: 1.3;
+        }
+        .unit-badge i { flex-shrink: 0; }
+        .unit-badge span {
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            text-overflow: ellipsis;
+            word-break: break-word;
         }
 
         /* Left Drawer navigation menu for mobile friendliness */
+        .nav-menu-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.35);
+            z-index: 1999;
+            backdrop-filter: blur(2px);
+        }
         .nav-menu {
             position: fixed;
             top: 0;
             right: 0;
-            width: 320px;
+            width: 300px;
             height: 100vh;
             z-index: 2000;
-            padding: 32px 24px;
-            background: rgba(255, 255, 255, 0.98);
+            padding: 28px 20px;
+            background: rgba(255, 255, 255, 0.99);
             backdrop-filter: blur(20px);
             border-left: 3px solid var(--primary);
-            box-shadow: -10px 0 30px rgba(5, 150, 105, 0.12);
+            box-shadow: -10px 0 30px rgba(5, 150, 105, 0.15);
             display: flex;
             flex-direction: column;
             animation: slideMenu 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            border-radius: 24px 0 0 24px;
+            border-radius: 20px 0 0 20px;
+            overflow-y: auto;
         }
 
         @keyframes slideMenu {
@@ -927,10 +946,10 @@
         .notifications-list {
             display: flex;
             flex-direction: column;
-            gap: 12px;
-            max-height: 350px;
+            gap: 10px;
+            max-height: 260px;
             overflow-y: auto;
-            padding-right: 8px;
+            padding-right: 6px;
         }
 
         .notification-item {
@@ -972,17 +991,19 @@
         }
 
         .notification-item.latest-glow::after {
-            content: 'New 24h';
+            content: 'NEW';
             position: absolute;
             top: -10px;
-            right: 16px;
+            right: 12px;
             background: linear-gradient(135deg, #fbbf24, #d97706);
             color: white;
-            font-size: 0.65rem;
+            font-size: 0.6rem;
             font-weight: 800;
-            padding: 2px 8px;
+            padding: 2px 7px;
             border-radius: 20px;
             text-transform: uppercase;
+            white-space: nowrap;
+            letter-spacing: 0.5px;
             box-shadow: 0 2px 6px rgba(217, 119, 6, 0.3);
         }
 
@@ -1855,10 +1876,13 @@
                     <span class="brand-sub">PERINTHALMANNA ZONE</span>
                 </div>
                 <div class="nav-actions">
-                    <span id="display-unit-name" class="unit-badge"><i class="fa-solid fa-mosque"></i> Loading...</span>
+                    <span id="display-unit-name" class="unit-badge"><i class="fa-solid fa-mosque"></i> <span>Loading...</span></span>
                     <button id="menu-toggle-btn" class="icon-btn"><i class="fa-solid fa-bars"></i></button>
                 </div>
             </nav>
+
+            <!-- Nav Overlay (click outside to close) -->
+            <div id="nav-menu-overlay" class="nav-menu-overlay hidden" onclick="document.getElementById('nav-menu').classList.add('hidden'); this.classList.add('hidden');"></div>
 
             <!-- Navigation Drawer Menu -->
             <div id="nav-menu" class="nav-menu glass hidden">
@@ -2126,6 +2150,8 @@
                                 class="fa-solid fa-calendar-plus"></i> പുതിയ പ്രോഗ്രാമുകൾ</button>
                         <button class="admin-menu-btn" data-admin-tab="admin-notifications"><i
                                 class="fa-solid fa-bullhorn"></i> നോട്ടിഫിക്കേഷൻ</button>
+                        <button class="admin-menu-btn" data-admin-tab="admin-settings"><i
+                                class="fa-solid fa-gear"></i> ക്രമീകരണം</button>
                     </div>
                 </aside>
 
@@ -2187,6 +2213,62 @@
                     <section id="admin-madrassas" class="admin-tab-content hidden">
                         <div class="section-header">
                             <h2>മദ്രസകളുടെ വിശദവിവരങ്ങൾ</h2>
+                        </div>
+
+                        <!-- Add Madrasa Form -->
+                        <div class="section-card glass" style="margin-bottom: 20px;">
+                            <div class="section-header" style="cursor:pointer;" onclick="document.getElementById('add-madrasa-form-wrapper').classList.toggle('hidden')">
+                                <h3><i class="fa-solid fa-plus-circle" style="color:var(--primary)"></i> പുതിയ മദ്രസ ആഡ് ചെയ്യുക</h3>
+                                <button type="button" class="btn secondary-btn size-sm"><i class="fa-solid fa-chevron-down"></i></button>
+                            </div>
+                            <div id="add-madrasa-form-wrapper" class="hidden">
+                                <form id="add-madrasa-form" class="standard-form mt-3">
+                                    <div class="form-row">
+                                        <div class="input-group">
+                                            <label for="new-madrasa-name"><i class="fa-solid fa-mosque"></i> മദ്രസ പേര് *</label>
+                                            <input type="text" id="new-madrasa-name" required placeholder="മദ്രസ പേര്">
+                                        </div>
+                                        <div class="input-group">
+                                            <label for="new-madrasa-username"><i class="fa-solid fa-user"></i> Username *</label>
+                                            <input type="text" id="new-madrasa-username" required placeholder="login username">
+                                        </div>
+                                    </div>
+                                    <div class="input-group">
+                                        <label for="new-madrasa-password"><i class="fa-solid fa-lock"></i> Password *</label>
+                                        <input type="text" id="new-madrasa-password" required placeholder="password">
+                                    </div>
+                                    <details style="margin-top:8px;">
+                                        <summary style="cursor:pointer; color:var(--primary); font-weight:600; padding:8px 0;"><i class="fa-solid fa-plus"></i> Add More Details (Optional)</summary>
+                                        <div class="form-row mt-2">
+                                            <div class="input-group">
+                                                <label for="new-madrasa-cluster">Cluster</label>
+                                                <input type="text" id="new-madrasa-cluster" placeholder="Cluster name">
+                                            </div>
+                                            <div class="input-group">
+                                                <label for="new-madrasa-zone">Zone</label>
+                                                <input type="text" id="new-madrasa-zone" placeholder="Zone">
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="input-group">
+                                                <label for="new-madrasa-phone">Phone</label>
+                                                <input type="tel" id="new-madrasa-phone" placeholder="Phone number">
+                                            </div>
+                                            <div class="input-group">
+                                                <label for="new-madrasa-email">Email</label>
+                                                <input type="email" id="new-madrasa-email" placeholder="Email">
+                                            </div>
+                                        </div>
+                                        <div class="input-group">
+                                            <label for="new-madrasa-address">Address</label>
+                                            <input type="text" id="new-madrasa-address" placeholder="Address">
+                                        </div>
+                                    </details>
+                                    <button type="submit" class="btn primary-btn mt-3" style="width:100%;">
+                                        <i class="fa-solid fa-plus"></i> മദ്രസ ആഡ് ചെയ്യുക
+                                    </button>
+                                </form>
+                            </div>
                         </div>
 
                         <div class="madrassas-split-layout">
@@ -2311,7 +2393,41 @@
                         </div>
                     </section>
 
-                </main>
+                    <!-- Admin Settings Tab -->
+                    <section id="admin-settings" class="admin-tab-content hidden">
+                        <div class="section-header">
+                            <h2><i class="fa-solid fa-gear"></i> ക്രമീകരണം (Settings)</h2>
+                        </div>
+
+                        <!-- Change Admin Password -->
+                        <div class="section-card glass mt-4">
+                            <h3><i class="fa-solid fa-key" style="color:var(--primary)"></i> അഡ്മിൻ Username / Password മാറ്റുക</h3>
+                            <form id="admin-change-cred-form" class="standard-form mt-3">
+                                <div class="input-group">
+                                    <label for="admin-cred-current-pass"><i class="fa-solid fa-lock"></i> നിലവിലുള്ള Password *</label>
+                                    <input type="password" id="admin-cred-current-pass" required placeholder="Current password">
+                                </div>
+                                <div class="input-group">
+                                    <label for="admin-cred-new-username"><i class="fa-solid fa-user"></i> പുതിയ Username (ഒഴിവാക്കിയാൽ മാറില്ല)</label>
+                                    <input type="text" id="admin-cred-new-username" placeholder="New username (optional)">
+                                </div>
+                                <div class="form-row">
+                                    <div class="input-group">
+                                        <label for="admin-cred-new-pass"><i class="fa-solid fa-lock"></i> പുതിയ Password (ഒഴിവാക്കിയാൽ മാറില്ല)</label>
+                                        <input type="password" id="admin-cred-new-pass" placeholder="New password (optional)">
+                                    </div>
+                                    <div class="input-group">
+                                        <label for="admin-cred-confirm-pass"><i class="fa-solid fa-lock"></i> Confirm Password</label>
+                                        <input type="password" id="admin-cred-confirm-pass" placeholder="Confirm new password">
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn primary-btn btn-glow mt-2">
+                                    <i class="fa-solid fa-save"></i> സേവ് ചെയ്യുക
+                                </button>
+                            </form>
+                        </div>
+                    </section>
+
             </div>
         </div>
 
@@ -2983,21 +3099,16 @@
             });
 
             // Drawer Menu Toggle and Click Outside Auto-hide
-            document.getElementById('menu-toggle-btn').addEventListener('click', () => {
+            function openNavMenu() {
                 document.getElementById('nav-menu').classList.remove('hidden');
-            });
-            document.getElementById('close-menu-btn').addEventListener('click', () => {
+                document.getElementById('nav-menu-overlay').classList.remove('hidden');
+            }
+            function closeNavMenu() {
                 document.getElementById('nav-menu').classList.add('hidden');
-            });
-            document.addEventListener('click', (e) => {
-                const menu = document.getElementById('nav-menu');
-                const toggleBtn = document.getElementById('menu-toggle-btn');
-                if (menu && !menu.classList.contains('hidden')) {
-                    if (!menu.contains(e.target) && !toggleBtn.contains(e.target)) {
-                        menu.classList.add('hidden');
-                    }
-                }
-            });
+                document.getElementById('nav-menu-overlay').classList.add('hidden');
+            }
+            document.getElementById('menu-toggle-btn').addEventListener('click', openNavMenu);
+            document.getElementById('close-menu-btn').addEventListener('click', closeNavMenu);
 
             // Tab Navigation for Unit Portal
             document.querySelectorAll('.menu-item[data-tab]').forEach(btn => {
@@ -3011,6 +3122,7 @@
                     document.querySelectorAll('.tab-content').forEach(t => t.classList.add('hidden'));
                     document.getElementById(tabId).classList.remove('hidden');
                     document.getElementById('nav-menu').classList.add('hidden');
+                    document.getElementById('nav-menu-overlay').classList.add('hidden');
 
                     if (tabId === 'reports-tab') {
                         resetReportsTab();
@@ -3022,7 +3134,7 @@
 
             // Change Password Trigger from Menu
             document.getElementById('change-pass-menu-btn').addEventListener('click', () => {
-                document.getElementById('nav-menu').classList.add('hidden');
+                closeNavMenu();
                 document.getElementById('change-password-modal').classList.remove('hidden');
             });
 
@@ -3372,7 +3484,7 @@
         async function loadUnitDashboard() {
             if (!state.user) return;
 
-            document.getElementById('display-unit-name').innerHTML = `<i class="fa-solid fa-mosque"></i> ${state.user.name}`;
+            document.getElementById('display-unit-name').innerHTML = `<i class="fa-solid fa-mosque"></i> <span>${state.user.name}</span>`;
             document.getElementById('menu-unit-name').textContent = state.user.name;
 
             try {
@@ -4611,6 +4723,75 @@
             }
         });
 
+    </script>
+    <script>
+        // ==================== ADD MADRASA FORM ====================
+        document.getElementById('add-madrasa-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const name = document.getElementById('new-madrasa-name').value.trim();
+            const username = document.getElementById('new-madrasa-username').value.trim();
+            const password = document.getElementById('new-madrasa-password').value.trim();
+            const cluster = document.getElementById('new-madrasa-cluster').value.trim();
+            const zone = document.getElementById('new-madrasa-zone').value.trim();
+            const phone = document.getElementById('new-madrasa-phone').value.trim();
+            const email = document.getElementById('new-madrasa-email').value.trim();
+            const address = document.getElementById('new-madrasa-address').value.trim();
+
+            if (!name || !username || !password) {
+                showToast('മദ്രസ പേര്, Username, Password നിർബന്ധമാണ്!', 'error');
+                return;
+            }
+
+            document.getElementById('app-loader').classList.remove('hidden');
+            try {
+                const res = await callServer('addUnit', name, username, password, cluster, zone, address, email, phone);
+                document.getElementById('app-loader').classList.add('hidden');
+                if (res.success) {
+                    showToast(res.message || 'മദ്രസ വിജയകരമായി ആഡ് ചെയ്തു!');
+                    document.getElementById('add-madrasa-form').reset();
+                    document.getElementById('add-madrasa-form-wrapper').classList.add('hidden');
+                    loadAdminDashboard();
+                } else {
+                    showToast(res.message || 'Error occurred', 'error');
+                }
+            } catch(err) {
+                document.getElementById('app-loader').classList.add('hidden');
+                showToast('Server error: ' + err.message, 'error');
+            }
+        });
+
+        // ==================== ADMIN CREDENTIALS CHANGE ====================
+        document.getElementById('admin-change-cred-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const currentPass = document.getElementById('admin-cred-current-pass').value;
+            const newUsername = document.getElementById('admin-cred-new-username').value.trim();
+            const newPass = document.getElementById('admin-cred-new-pass').value;
+            const confirmPass = document.getElementById('admin-cred-confirm-pass').value;
+
+            if (newPass && newPass !== confirmPass) {
+                showToast('Confirm Password match ആകുന്നില്ല!', 'error');
+                return;
+            }
+            if (!newUsername && !newPass) {
+                showToast('Username അല്ലെങ്കിൽ Password ഒന്നെങ്കിലും നൽകണം!', 'error');
+                return;
+            }
+
+            document.getElementById('app-loader').classList.remove('hidden');
+            try {
+                const res = await callServer('changeAdminCredentials', state.user.unitId, currentPass, newUsername || null, newPass || null);
+                document.getElementById('app-loader').classList.add('hidden');
+                if (res.success) {
+                    showToast(res.message || 'ക്രെഡൻഷ്യൽ അപ്ഡേറ്റ് ചെയ്തു!');
+                    document.getElementById('admin-change-cred-form').reset();
+                } else {
+                    showToast(res.message || 'Error', 'error');
+                }
+            } catch(err) {
+                document.getElementById('app-loader').classList.add('hidden');
+                showToast('Server error: ' + err.message, 'error');
+            }
+        });
     </script>
 </body>
 
