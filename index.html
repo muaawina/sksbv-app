@@ -698,11 +698,7 @@
             max-width: 180px;
             line-height: 1.3;
         }
-
-        .unit-badge i {
-            flex-shrink: 0;
-        }
-
+        .unit-badge i { flex-shrink: 0; }
         .unit-badge span {
             overflow: hidden;
             display: -webkit-box;
@@ -716,11 +712,10 @@
         .nav-menu-overlay {
             position: fixed;
             inset: 0;
-            background: rgba(0, 0, 0, 0.35);
+            background: rgba(0,0,0,0.35);
             z-index: 1999;
             backdrop-filter: blur(2px);
         }
-
         .nav-menu {
             position: fixed;
             top: 0;
@@ -729,7 +724,8 @@
             height: 100vh;
             z-index: 2000;
             padding: 28px 20px;
-            background: rgba(255, 255, 255, 0.99);
+            background: #ffffff !important;
+            color: #0f172a !important;
             backdrop-filter: blur(20px);
             border-left: 3px solid var(--primary);
             box-shadow: -10px 0 30px rgba(5, 150, 105, 0.15);
@@ -773,9 +769,9 @@
         }
 
         .menu-item {
-            background: transparent;
+            background: transparent !important;
             border: none;
-            color: var(--text-main);
+            color: #0f172a !important;
             padding: 12px 16px;
             border-radius: 8px;
             text-align: left;
@@ -790,13 +786,13 @@
 
         .menu-item:hover,
         .menu-item.active {
-            background: rgba(5, 150, 105, 0.08);
-            color: var(--primary);
+            background: rgba(5,150,105,0.1) !important;
+            color: #059669 !important;
         }
 
         .menu-item.logout-btn {
             margin-top: 40px;
-            color: var(--danger);
+            color: #dc2626 !important;
         }
 
         .menu-item.logout-btn:hover {
@@ -955,6 +951,7 @@
             max-height: 260px;
             overflow-y: auto;
             padding-right: 6px;
+            padding-top: 14px;
         }
 
         .notification-item {
@@ -995,22 +992,7 @@
             background: linear-gradient(180deg, #ffffff, #fffdf2) !important;
         }
 
-        .notification-item.latest-glow::after {
-            content: 'NEW';
-            position: absolute;
-            top: -10px;
-            right: 12px;
-            background: linear-gradient(135deg, #fbbf24, #d97706);
-            color: white;
-            font-size: 0.6rem;
-            font-weight: 800;
-            padding: 2px 7px;
-            border-radius: 20px;
-            text-transform: uppercase;
-            white-space: nowrap;
-            letter-spacing: 0.5px;
-            box-shadow: 0 2px 6px rgba(217, 119, 6, 0.3);
-        }
+
 
         .notif-header {
             display: flex;
@@ -1881,16 +1863,13 @@
                     <span class="brand-sub">PERINTHALMANNA ZONE</span>
                 </div>
                 <div class="nav-actions">
-                    <span id="display-unit-name" class="unit-badge"><i class="fa-solid fa-mosque"></i>
-                        <span>Loading...</span></span>
+                    <span id="display-unit-name" class="unit-badge"><i class="fa-solid fa-mosque"></i> <span>Loading...</span></span>
                     <button id="menu-toggle-btn" class="icon-btn"><i class="fa-solid fa-bars"></i></button>
                 </div>
             </nav>
 
             <!-- Nav Overlay (click outside to close) -->
-            <div id="nav-menu-overlay" class="nav-menu-overlay hidden"
-                onclick="document.getElementById('nav-menu').classList.add('hidden'); this.classList.add('hidden');">
-            </div>
+            <div id="nav-menu-overlay" class="nav-menu-overlay hidden" onclick="document.getElementById('nav-menu').classList.add('hidden'); this.classList.add('hidden');"></div>
 
             <!-- Navigation Drawer Menu -->
             <div id="nav-menu" class="nav-menu glass hidden">
@@ -1924,7 +1903,7 @@
                         <div class="stat-card glass-glow rank-card">
                             <div class="card-icon"><i class="fa-solid fa-trophy"></i></div>
                             <div class="card-info">
-                                <h3>Rank</h3>
+                                <h3>റാങ്ക് (Rank)</h3>
                                 <div id="stat-rank" class="card-value">-</div>
                                 <span class="card-sub-info" id="rank-update-time">Loading...</span>
                             </div>
@@ -1933,7 +1912,7 @@
                         <div class="stat-card glass-glow score-card">
                             <div class="card-icon"><i class="fa-solid fa-star"></i></div>
                             <div class="card-info">
-                                <h3>Total Score</h3>
+                                <h3>ടോട്ടൽ സ്കോർ</h3>
                                 <div id="stat-score" class="card-value">0</div>
                                 <span class="card-sub-info" id="score-update-time">Loading...</span>
                             </div>
@@ -1942,16 +1921,16 @@
                         <div class="stat-card glass-glow students-card">
                             <div class="card-icon"><i class="fa-solid fa-users"></i></div>
                             <div class="card-info">
-                                <h3>Total Students</h3>
+                                <h3>കുട്ടികളുടെ എണ്ണം</h3>
                                 <div id="stat-students" class="card-value">0</div>
-                                <span class="card-sub-info">Total Students</span>
+                                <span class="card-sub-info">ആകെ വിദ്യാർത്ഥികൾ</span>
                             </div>
                         </div>
                     </div>
 
                     <!-- Notification Area -->
                     <div class="section-card glass notification-section">
-                        <h2><i class="fa-solid fa-bell bell-ring"></i> Notifications</h2>
+                        <h2><i class="fa-solid fa-bell bell-ring"></i> നോട്ടിഫിക്കേഷൻ (Notifications)</h2>
                         <div id="notifications-list" class="notifications-list">
                             <div class="empty-state">നോട്ടിഫിക്കേഷനുകൾ ലഭ്യമല്ല</div>
                         </div>
@@ -2158,8 +2137,8 @@
                                 class="fa-solid fa-calendar-plus"></i> പുതിയ പ്രോഗ്രാമുകൾ</button>
                         <button class="admin-menu-btn" data-admin-tab="admin-notifications"><i
                                 class="fa-solid fa-bullhorn"></i> നോട്ടിഫിക്കേഷൻ</button>
-                        <button class="admin-menu-btn" data-admin-tab="admin-settings"><i class="fa-solid fa-gear"></i>
-                            ക്രമീകരണം</button>
+                        <button class="admin-menu-btn" data-admin-tab="admin-settings"><i
+                                class="fa-solid fa-gear"></i> ക്രമീകരണം</button>
                     </div>
                 </aside>
 
@@ -2225,38 +2204,28 @@
 
                         <!-- Add Madrasa Form -->
                         <div class="section-card glass" style="margin-bottom: 20px;">
-                            <div class="section-header" style="cursor:pointer;"
-                                onclick="document.getElementById('add-madrasa-form-wrapper').classList.toggle('hidden')">
-                                <h3><i class="fa-solid fa-plus-circle" style="color:var(--primary)"></i> പുതിയ മദ്രസ ആഡ്
-                                    ചെയ്യുക</h3>
-                                <button type="button" class="btn secondary-btn size-sm"><i
-                                        class="fa-solid fa-chevron-down"></i></button>
+                            <div class="section-header" style="cursor:pointer;" onclick="document.getElementById('add-madrasa-form-wrapper').classList.toggle('hidden')">
+                                <h3><i class="fa-solid fa-plus-circle" style="color:var(--primary)"></i> പുതിയ മദ്രസ ആഡ് ചെയ്യുക</h3>
+                                <button type="button" class="btn secondary-btn size-sm"><i class="fa-solid fa-chevron-down"></i></button>
                             </div>
                             <div id="add-madrasa-form-wrapper" class="hidden">
                                 <form id="add-madrasa-form" class="standard-form mt-3">
                                     <div class="form-row">
                                         <div class="input-group">
-                                            <label for="new-madrasa-name"><i class="fa-solid fa-mosque"></i> മദ്രസ പേര്
-                                                *</label>
+                                            <label for="new-madrasa-name"><i class="fa-solid fa-mosque"></i> മദ്രസ പേര് *</label>
                                             <input type="text" id="new-madrasa-name" required placeholder="മദ്രസ പേര്">
                                         </div>
                                         <div class="input-group">
-                                            <label for="new-madrasa-username"><i class="fa-solid fa-user"></i> Username
-                                                *</label>
-                                            <input type="text" id="new-madrasa-username" required
-                                                placeholder="login username">
+                                            <label for="new-madrasa-username"><i class="fa-solid fa-user"></i> Username *</label>
+                                            <input type="text" id="new-madrasa-username" required placeholder="login username">
                                         </div>
                                     </div>
                                     <div class="input-group">
-                                        <label for="new-madrasa-password"><i class="fa-solid fa-lock"></i> Password
-                                            *</label>
+                                        <label for="new-madrasa-password"><i class="fa-solid fa-lock"></i> Password *</label>
                                         <input type="text" id="new-madrasa-password" required placeholder="password">
                                     </div>
                                     <details style="margin-top:8px;">
-                                        <summary
-                                            style="cursor:pointer; color:var(--primary); font-weight:600; padding:8px 0;">
-                                            <i class="fa-solid fa-plus"></i> Add More Details (Optional)
-                                        </summary>
+                                        <summary style="cursor:pointer; color:var(--primary); font-weight:600; padding:8px 0;"><i class="fa-solid fa-plus"></i> Add More Details (Optional)</summary>
                                         <div class="form-row mt-2">
                                             <div class="input-group">
                                                 <label for="new-madrasa-cluster">Cluster</label>
@@ -2419,33 +2388,24 @@
 
                         <!-- Change Admin Password -->
                         <div class="section-card glass mt-4">
-                            <h3><i class="fa-solid fa-key" style="color:var(--primary)"></i> അഡ്മിൻ Username / Password
-                                മാറ്റുക</h3>
+                            <h3><i class="fa-solid fa-key" style="color:var(--primary)"></i> അഡ്മിൻ Username / Password മാറ്റുക</h3>
                             <form id="admin-change-cred-form" class="standard-form mt-3">
                                 <div class="input-group">
-                                    <label for="admin-cred-current-pass"><i class="fa-solid fa-lock"></i> നിലവിലുള്ള
-                                        Password *</label>
-                                    <input type="password" id="admin-cred-current-pass" required
-                                        placeholder="Current password">
+                                    <label for="admin-cred-current-pass"><i class="fa-solid fa-lock"></i> നിലവിലുള്ള Password *</label>
+                                    <input type="password" id="admin-cred-current-pass" required placeholder="Current password">
                                 </div>
                                 <div class="input-group">
-                                    <label for="admin-cred-new-username"><i class="fa-solid fa-user"></i> പുതിയ Username
-                                        (ഒഴിവാക്കിയാൽ മാറില്ല)</label>
-                                    <input type="text" id="admin-cred-new-username"
-                                        placeholder="New username (optional)">
+                                    <label for="admin-cred-new-username"><i class="fa-solid fa-user"></i> പുതിയ Username (ഒഴിവാക്കിയാൽ മാറില്ല)</label>
+                                    <input type="text" id="admin-cred-new-username" placeholder="New username (optional)">
                                 </div>
                                 <div class="form-row">
                                     <div class="input-group">
-                                        <label for="admin-cred-new-pass"><i class="fa-solid fa-lock"></i> പുതിയ Password
-                                            (ഒഴിവാക്കിയാൽ മാറില്ല)</label>
-                                        <input type="password" id="admin-cred-new-pass"
-                                            placeholder="New password (optional)">
+                                        <label for="admin-cred-new-pass"><i class="fa-solid fa-lock"></i> പുതിയ Password (ഒഴിവാക്കിയാൽ മാറില്ല)</label>
+                                        <input type="password" id="admin-cred-new-pass" placeholder="New password (optional)">
                                     </div>
                                     <div class="input-group">
-                                        <label for="admin-cred-confirm-pass"><i class="fa-solid fa-lock"></i> Confirm
-                                            Password</label>
-                                        <input type="password" id="admin-cred-confirm-pass"
-                                            placeholder="Confirm new password">
+                                        <label for="admin-cred-confirm-pass"><i class="fa-solid fa-lock"></i> Confirm Password</label>
+                                        <input type="password" id="admin-cred-confirm-pass" placeholder="Confirm new password">
                                     </div>
                                 </div>
                                 <button type="submit" class="btn primary-btn btn-glow mt-2">
@@ -3129,10 +3089,12 @@
             function openNavMenu() {
                 document.getElementById('nav-menu').classList.remove('hidden');
                 document.getElementById('nav-menu-overlay').classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
             }
             function closeNavMenu() {
                 document.getElementById('nav-menu').classList.add('hidden');
                 document.getElementById('nav-menu-overlay').classList.add('hidden');
+                document.body.style.overflow = '';
             }
             document.getElementById('menu-toggle-btn').addEventListener('click', openNavMenu);
             document.getElementById('close-menu-btn').addEventListener('click', closeNavMenu);
@@ -3653,7 +3615,7 @@
 
                 item.innerHTML = `
                 <div class="notif-header">
-                    <h4>${escapeHtml(n.heading)}</h4>
+                    <h4>${escapeHtml(n.heading)}${isLatest24h ? ' <span style="display:inline-block;background:linear-gradient(135deg,#fbbf24,#d97706);color:white;font-size:0.55rem;font-weight:800;padding:2px 7px;border-radius:20px;text-transform:uppercase;vertical-align:middle;letter-spacing:0.5px;box-shadow:0 2px 6px rgba(217,119,6,0.3);">NEW</span>' : ''}</h4>
                     <span class="notif-time"><i class="fa-solid fa-calendar-day"></i> ${n.timestamp}</span>
                 </div>
                 <p>${escapeHtml(n.message)}</p>
@@ -3717,7 +3679,7 @@
                         row.className = 'program-row';
 
                         const posterHtml = p.posterUrl
-                            ? `<div class="program-poster-container"><img class="program-poster-img" src="${p.posterUrl}" onclick="zoomImage('${p.posterUrl}')" alt="Poster"></div>`
+                            ? `<div class="program-poster-container"><img class="program-poster-img" src="${fixDriveImageUrl(p.posterUrl)}" onclick="zoomImage('${fixDriveImageUrl(p.posterUrl)}')" alt="Poster" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><i class="fa-solid fa-image text-muted" style="font-size:2rem;display:none;"></i></div>`
                             : `<div class="program-poster-container"><i class="fa-solid fa-image text-muted" style="font-size: 2rem;"></i></div>`;
 
                         row.innerHTML = `
@@ -3776,7 +3738,7 @@
                         else statusBadge = `<span class="badge badge-rejected">Rejected</span>`;
 
                         const photoCell = r.photoUrl
-                            ? `<img class="table-photo-thumbnail" src="${r.photoUrl}" onclick="zoomImage('${r.photoUrl}')" alt="Upload">`
+                            ? `<img class="table-photo-thumbnail" src="${fixDriveImageUrl(r.photoUrl)}" onclick="zoomImage('${fixDriveImageUrl(r.photoUrl)}')" alt="Upload">`
                             : '-';
 
                         tr.innerHTML = `
@@ -3915,7 +3877,7 @@
                                         <td>${r.eventDate}</td>
                                         <td><span class="badge ${r.status === 'Approved' ? 'badge-approved' : (r.status === 'Pending' ? 'badge-pending' : 'badge-rejected')}">${r.status}</span></td>
                                         <td>${r.pointsAwarded} pts</td>
-                                        <td>${r.photoUrl ? `<img class="table-photo-thumbnail" src="${r.photoUrl}" onclick="zoomImage('${r.photoUrl}')" alt="Photo">` : '-'}</td>
+                                        <td>${r.photoUrl ? `<img class="table-photo-thumbnail" src="${fixDriveImageUrl(r.photoUrl)}" onclick="zoomImage('${fixDriveImageUrl(r.photoUrl)}')" alt="Photo">` : '-'}</td>
                                         <td>
                                             <button class="btn secondary-btn size-sm" onclick="adminEditReportScore('${r.id}', '${escapeJs(r.programName)}', ${r.pointsAwarded})">
                                                 <i class="fa-solid fa-edit"></i> എഡിറ്റ്
@@ -4035,7 +3997,7 @@
                 card.className = 'approval-card glass';
 
                 const photoHtml = r.photoUrl
-                    ? `<div class="approval-photo-col"><img src="${r.photoUrl}" onclick="zoomImage('${r.photoUrl}')" alt="Report"></div>`
+                    ? `<div class="approval-photo-col"><img src="${fixDriveImageUrl(r.photoUrl)}" onclick="zoomImage('${fixDriveImageUrl(r.photoUrl)}')" alt="Report"></div>`
                     : `<div class="approval-photo-col" style="display:flex;align-items:center;justify-content:center;"><i class="fa-solid fa-image text-muted" style="font-size: 3rem;"></i></div>`;
 
                 let pointHelperText = '';
@@ -4675,6 +4637,29 @@
                 .replace(/'/g, "&#039;");
         }
 
+        // Convert any Google Drive URL to working thumbnail URL for <img src>
+        function fixDriveImageUrl(url) {
+            if (!url) return '';
+            // Already thumbnail format - return as-is
+            if (url.includes('drive.google.com/thumbnail')) return url;
+            // Extract file ID from various Drive URL formats
+            let fileId = null;
+            const patterns = [
+                /\/d\/([a-zA-Z0-9_-]{25,})/,           // /d/FILE_ID/
+                /[?&]id=([a-zA-Z0-9_-]{25,})/,          // ?id=FILE_ID
+                /\/file\/d\/([a-zA-Z0-9_-]{25,})/,      // /file/d/FILE_ID
+                /open\?id=([a-zA-Z0-9_-]{25,})/          // open?id=FILE_ID
+            ];
+            for (const pattern of patterns) {
+                const match = url.match(pattern);
+                if (match) { fileId = match[1]; break; }
+            }
+            if (fileId) {
+                return 'https://drive.google.com/thumbnail?id=' + fileId + '&sz=w800';
+            }
+            return url; // Non-Drive URL - return as-is
+        }
+
         function escapeJs(str) {
             if (!str) return '';
             return str.toString()
@@ -4753,7 +4738,7 @@
     </script>
     <script>
         // ==================== ADD MADRASA FORM ====================
-        document.getElementById('add-madrasa-form').addEventListener('submit', async function (e) {
+        document.getElementById('add-madrasa-form').addEventListener('submit', async function(e) {
             e.preventDefault();
             const name = document.getElementById('new-madrasa-name').value.trim();
             const username = document.getElementById('new-madrasa-username').value.trim();
@@ -4781,14 +4766,14 @@
                 } else {
                     showToast(res.message || 'Error occurred', 'error');
                 }
-            } catch (err) {
+            } catch(err) {
                 document.getElementById('app-loader').classList.add('hidden');
                 showToast('Server error: ' + err.message, 'error');
             }
         });
 
         // ==================== ADMIN CREDENTIALS CHANGE ====================
-        document.getElementById('admin-change-cred-form').addEventListener('submit', async function (e) {
+        document.getElementById('admin-change-cred-form').addEventListener('submit', async function(e) {
             e.preventDefault();
             const currentPass = document.getElementById('admin-cred-current-pass').value;
             const newUsername = document.getElementById('admin-cred-new-username').value.trim();
@@ -4814,7 +4799,7 @@
                 } else {
                     showToast(res.message || 'Error', 'error');
                 }
-            } catch (err) {
+            } catch(err) {
                 document.getElementById('app-loader').classList.add('hidden');
                 showToast('Server error: ' + err.message, 'error');
             }
